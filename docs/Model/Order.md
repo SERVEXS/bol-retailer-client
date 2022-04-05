@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **order_id** | **string** | The identifier of the order. | [optional]
 **pickup_point** | **bool** | Indicates whether this order is shipped to a Pick Up Point. | [optional]
-**order_placed_date_time** | **\DateTime** | The date and time in ISO 8601 format when the order was placed. | [optional]
+**order_placed_date_time** | [**\DateTime**](\DateTime.md) | The date and time in ISO 8601 format when the order was placed. | [optional]
 **shipment_details** | [**\ServeXS\BolRetailer\v7\Model\ShipmentDetails**](ShipmentDetails.md) |  |
 **billing_details** | [**\ServeXS\BolRetailer\v7\Model\BillingDetails**](BillingDetails.md) |  | [optional]
 **order_items** | [**\ServeXS\BolRetailer\v7\Model\OrderOrderItem[]**](OrderOrderItem.md) |  |
