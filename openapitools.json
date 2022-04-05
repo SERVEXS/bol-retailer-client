@@ -1,0 +1,7 @@
+{
+  "$schema": "https://api.bol.com/retailer/public/apispec/Retailer%20API%20-%20v7",
+  "spaces": 2,
+  "generator-cli": {
+    "version": "5.4.0"
+  }
+}

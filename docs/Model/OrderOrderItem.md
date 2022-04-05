@@ -1,0 +1,19 @@
+# # OrderOrderItem
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**order_item_id** | **string** | The id for the order item. One order can have multiple order items, but the list can only take one item. | [optional]
+**cancellation_request** | **bool** | Indicates whether the order was cancelled on request of the customer before the retailer has shipped it. | [optional]
+**fulfilment** | [**\ServeXS\BolRetailer\v7\Model\OrderFulfilment**](OrderFulfilment.md) |  | [optional]
+**offer** | [**\ServeXS\BolRetailer\v7\Model\OrderOffer**](OrderOffer.md) |  | [optional]
+**product** | [**\ServeXS\BolRetailer\v7\Model\OrderProduct**](OrderProduct.md) |  | [optional]
+**quantity** | **int** | Amount of ordered products for this order item id. | [optional]
+**quantity_shipped** | **int** | Amount of shipped products for this order item id. | [optional]
+**quantity_cancelled** | **int** | Amount of cancelled products for this order item id. | [optional]
+**unit_price** | **float** | The selling price to the customer of a single unit including VAT. | [optional]
+**commission** | **float** | The commission for all quantities of this order item. | [optional]
+**additional_services** | [**\ServeXS\BolRetailer\v7\Model\AdditionalService[]**](AdditionalService.md) |  | [optional]
+
+[[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
