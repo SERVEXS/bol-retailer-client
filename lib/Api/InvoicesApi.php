@@ -408,7 +408,7 @@ class InvoicesApi
      *
      * @throws \ServeXS\BolRetailer\v7\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return string[]|\ServeXS\BolRetailer\v7\Model\Problem
+     * @return string[]|\ServeXS\BolRetailer\v7\Model\Problem|\ServeXS\BolRetailer\v7\Model\Problem
      */
     public function getInvoiceSpecification($invoice_id, $page = null)
     {
@@ -426,7 +426,7 @@ class InvoicesApi
      *
      * @throws \ServeXS\BolRetailer\v7\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of string[]|\ServeXS\BolRetailer\v7\Model\Problem, HTTP status code, HTTP response headers (array of strings)
+     * @return array of string[]|\ServeXS\BolRetailer\v7\Model\Problem|\ServeXS\BolRetailer\v7\Model\Problem, HTTP status code, HTTP response headers (array of strings)
      */
     public function getInvoiceSpecificationWithHttpInfo($invoice_id, $page = null)
     {
