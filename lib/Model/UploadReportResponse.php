@@ -331,7 +331,7 @@ class UploadReportResponse implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets language
      *
-     * @param string $language The language in which the content changes were submitted.
+     * @param string $language The language in which content is submitted.
      *
      * @return self
      */

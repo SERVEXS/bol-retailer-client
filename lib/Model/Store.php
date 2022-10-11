@@ -60,7 +60,7 @@ class Store implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPITypes = [
         'product_title' => 'string',
-        'visible' => '\ServeXS\BolRetailer\v7\Model\CountryCode[]'
+        'visible' => '\ServeXS\BolRetailer\v7\Model\OffersCountryCode[]'
     ];
 
     /**
@@ -241,7 +241,7 @@ class Store implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets visible
      *
-     * @return \ServeXS\BolRetailer\v7\Model\CountryCode[]
+     * @return \ServeXS\BolRetailer\v7\Model\OffersCountryCode[]
      */
     public function getVisible()
     {
@@ -251,7 +251,7 @@ class Store implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets visible
      *
-     * @param \ServeXS\BolRetailer\v7\Model\CountryCode[] $visible visible
+     * @param \ServeXS\BolRetailer\v7\Model\OffersCountryCode[] $visible visible
      *
      * @return self
      */

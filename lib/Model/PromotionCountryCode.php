@@ -1,6 +1,6 @@
 <?php
 /**
- * Stock
+ * PromotionCountryCode
  *
  * PHP version 7.3
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \ServeXS\BolRetailer\v7\ObjectSerializer;
 
 /**
- * Stock Class Doc Comment
+ * PromotionCountryCode Class Doc Comment
  *
  * @category Class
  * @package  ServeXS\BolRetailer\v7
@@ -42,7 +42,7 @@ use \ServeXS\BolRetailer\v7\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class Stock implements ModelInterface, ArrayAccess, \JsonSerializable
+class PromotionCountryCode implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -51,7 +51,7 @@ class Stock implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'Stock';
+    protected static $openAPIModelName = 'PromotionCountryCode';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,9 +59,7 @@ class Stock implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'amount' => 'int',
-        'corrected_stock' => 'int',
-        'managed_by_retailer' => 'bool'
+        'country_code' => 'string'
     ];
 
     /**
@@ -72,9 +70,7 @@ class Stock implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'amount' => 'int32',
-        'corrected_stock' => 'int32',
-        'managed_by_retailer' => null
+        'country_code' => null
     ];
 
     /**
@@ -104,9 +100,7 @@ class Stock implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'amount' => 'amount',
-        'corrected_stock' => 'correctedStock',
-        'managed_by_retailer' => 'managedByRetailer'
+        'country_code' => 'countryCode'
     ];
 
     /**
@@ -115,9 +109,7 @@ class Stock implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'amount' => 'setAmount',
-        'corrected_stock' => 'setCorrectedStock',
-        'managed_by_retailer' => 'setManagedByRetailer'
+        'country_code' => 'setCountryCode'
     ];
 
     /**
@@ -126,9 +118,7 @@ class Stock implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'amount' => 'getAmount',
-        'corrected_stock' => 'getCorrectedStock',
-        'managed_by_retailer' => 'getManagedByRetailer'
+        'country_code' => 'getCountryCode'
     ];
 
     /**
@@ -172,6 +162,21 @@ class Stock implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$openAPIModelName;
     }
 
+    const COUNTRY_CODE_NL = 'NL';
+    const COUNTRY_CODE_BE = 'BE';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getCountryCodeAllowableValues()
+    {
+        return [
+            self::COUNTRY_CODE_NL,
+            self::COUNTRY_CODE_BE,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -188,9 +193,7 @@ class Stock implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['amount'] = $data['amount'] ?? null;
-        $this->container['corrected_stock'] = $data['corrected_stock'] ?? null;
-        $this->container['managed_by_retailer'] = $data['managed_by_retailer'] ?? null;
+        $this->container['country_code'] = $data['country_code'] ?? null;
     }
 
     /**
@@ -202,9 +205,18 @@ class Stock implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['managed_by_retailer'] === null) {
-            $invalidProperties[] = "'managed_by_retailer' can't be null";
+        if ($this->container['country_code'] === null) {
+            $invalidProperties[] = "'country_code' can't be null";
         }
+        $allowedValues = $this->getCountryCodeAllowableValues();
+        if (!is_null($this->container['country_code']) && !in_array($this->container['country_code'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'country_code', must be one of '%s'",
+                $this->container['country_code'],
+                implode("', '", $allowedValues)
+            );
+        }
+
         return $invalidProperties;
     }
 
@@ -221,73 +233,35 @@ class Stock implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets amount
+     * Gets country_code
      *
-     * @return int|null
+     * @return string
      */
-    public function getAmount()
+    public function getCountryCode()
     {
-        return $this->container['amount'];
+        return $this->container['country_code'];
     }
 
     /**
-     * Sets amount
+     * Sets country_code
      *
-     * @param int|null $amount The amount of stock available for the specified product present in the retailers warehouse. Note: this should not be the FBB stock! Defaults to 0.
+     * @param string $country_code The country code of the country in which the promotion is active.
      *
      * @return self
      */
-    public function setAmount($amount)
+    public function setCountryCode($country_code)
     {
-        $this->container['amount'] = $amount;
-
-        return $this;
-    }
-
-    /**
-     * Gets corrected_stock
-     *
-     * @return int|null
-     */
-    public function getCorrectedStock()
-    {
-        return $this->container['corrected_stock'];
-    }
-
-    /**
-     * Sets corrected_stock
-     *
-     * @param int|null $corrected_stock The amount of order items in stock minus handled order items and minus open order items. As compared to the stock you sent us. When this reaches 0, your offer will not be for sale on the shop.
-     *
-     * @return self
-     */
-    public function setCorrectedStock($corrected_stock)
-    {
-        $this->container['corrected_stock'] = $corrected_stock;
-
-        return $this;
-    }
-
-    /**
-     * Gets managed_by_retailer
-     *
-     * @return bool
-     */
-    public function getManagedByRetailer()
-    {
-        return $this->container['managed_by_retailer'];
-    }
-
-    /**
-     * Sets managed_by_retailer
-     *
-     * @param bool $managed_by_retailer Configures whether the retailer manages the stock levels or that bol.com should calculate the corrected stock based on actual open orders. In case the configuration is set to 'false', all open orders are used to calculate the corrected stock. In case the configuration is set to 'true', only orders that are placed after the last offer update are taken into account.
-     *
-     * @return self
-     */
-    public function setManagedByRetailer($managed_by_retailer)
-    {
-        $this->container['managed_by_retailer'] = $managed_by_retailer;
+        $allowedValues = $this->getCountryCodeAllowableValues();
+        if (!in_array($country_code, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'country_code', must be one of '%s'",
+                    $country_code,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['country_code'] = $country_code;
 
         return $this;
     }

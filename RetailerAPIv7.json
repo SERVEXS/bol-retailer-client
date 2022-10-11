@@ -1,7 +1,7 @@
 {
   "swagger" : "2.0",
   "host": "api.bol.com",
-  "schemes": ["https"], 
+  "schemes": ["https"],
   "info" : {
     "description" : "The bol.com API for retailers.",
     "version" : "7.x",
@@ -558,6 +558,12 @@
           },
           "400" : {
             "description" : "Bad request: The sent request does not meet the API specification. Please check the error message(s) for more information.",
+            "schema" : {
+              "$ref" : "#/definitions/Problem"
+            }
+          },
+          "404" : {
+            "description" : "Not found: The requested item could not be found.",
             "schema" : {
               "$ref" : "#/definitions/Problem"
             }
@@ -1164,8 +1170,8 @@
       },
       "post" : {
         "tags" : [ "Replenishments" ],
-        "summary" : "Post replenishment",
-        "description" : "Create a replenishment.",
+        "summary" : "Create a replenishment",
+        "description" : "Creates a replenishment.",
         "operationId" : "post-replenishment",
         "consumes" : [ "application/vnd.retailer.v7+json" ],
         "produces" : [ "application/vnd.retailer.v7+json" ],
@@ -1328,8 +1334,8 @@
       },
       "put" : {
         "tags" : [ "Replenishments" ],
-        "summary" : "Update replenishment ",
-        "description" : "Update a replenishment.",
+        "summary" : "Update a replenishment by replenishment id",
+        "description" : "Updates a replenishment.",
         "operationId" : "put-replenishment",
         "consumes" : [ "application/vnd.retailer.v7+json" ],
         "produces" : [ "application/vnd.retailer.v7+json" ],
@@ -1503,7 +1509,7 @@
       },
       "post" : {
         "tags" : [ "Returns" ],
-        "summary" : "Create return",
+        "summary" : "Create a return",
         "description" : "Create a return, and automatically handle it with the provided handling result. When successfully created, the resulting return id is provided in the process status.",
         "operationId" : "create-return",
         "produces" : [ "application/vnd.retailer.v7+json" ],
@@ -1564,15 +1570,15 @@
     "/retailer/returns/{rma-id}" : {
       "put" : {
         "tags" : [ "Returns" ],
-        "summary" : "Handle a return",
-        "description" : "Allows the user to handle a return. This can be to either handle an open return, or change the handlingResult of an already handled return. The latter is only possible in limited scenarios, please check the returns documentation for a complete list.",
+        "summary" : "Handle a return by rma id",
+        "description" : "Allows the user to handle a return. This can be to either handle an open return, or change the handlingResult of an already handled return. Please refer to the Returns documentation for further details.",
         "operationId" : "handle-return",
         "consumes" : [ "application/vnd.retailer.v7+json" ],
         "produces" : [ "application/vnd.retailer.v7+json" ],
         "parameters" : [ {
           "name" : "rma-id",
           "in" : "path",
-          "description" : "The RMA (Return Merchandise Authorization) id that identifies this particular return.",
+          "description" : "The RMA (Return Merchandise Authorization) identifier of the return.",
           "required" : true,
           "type" : "integer",
           "format" : "int64"
@@ -2125,7 +2131,7 @@
       "properties" : {
         "id" : {
           "type" : "string",
-          "example" : "Width",
+          "example" : "Ean",
           "description" : "The identifier of the attribute for which the value has changed.",
           "minLength" : 1,
           "maxLength" : 100
@@ -2149,7 +2155,7 @@
           "example" : "14.5",
           "description" : "The value of the attribute.",
           "minLength" : 1,
-          "maxLength" : 300
+          "maxLength" : 10000
         },
         "unitId" : {
           "type" : "string",
@@ -2459,17 +2465,6 @@
         }
       }
     },
-    "CountryCode" : {
-      "type" : "object",
-      "required" : [ "countryCode" ],
-      "properties" : {
-        "countryCode" : {
-          "type" : "string",
-          "example" : "NL",
-          "description" : "Countries in which this offer is currently on sale in the webshop, in ISO-3166-1 format."
-        }
-      }
-    },
     "CreateAddress" : {
       "type" : "object",
       "required" : [ "attentionOf", "city", "houseNumber", "streetName", "zipCode" ],
@@ -2636,7 +2631,7 @@
         "language" : {
           "type" : "string",
           "example" : "nl",
-          "description" : "The language in which the content changes were submitted.",
+          "description" : "The language in which content is submitted.",
           "enum" : [ "nl", "nl-BE", "fr", "fr-BE" ]
         },
         "attributes" : {
@@ -2692,15 +2687,15 @@
         "labelingByBol" : {
           "type" : "boolean",
           "example" : false,
-          "description" : "Indicates whether the replenishment will be labeled by bol.com or not."
+          "description" : "Indicates whether the replenishment will be labeled by bol.com."
         },
         "numberOfLoadCarriers" : {
           "type" : "integer",
           "format" : "int32",
           "example" : 10,
-          "description" : "The number of parcels in this replenishment.",
+          "description" : "The number of parcels in this replenishment. Note: if you are using the bol.com pickup service, the maximum number is 20.",
           "minimum" : 1,
-          "maximum" : 20
+          "maximum" : 66
         },
         "pickupAppointment" : {
           "$ref" : "#/definitions/CreatePickupAppointment"
@@ -3356,6 +3351,17 @@
         }
       }
     },
+    "OffersCountryCode" : {
+      "type" : "object",
+      "required" : [ "countryCode" ],
+      "properties" : {
+        "countryCode" : {
+          "type" : "string",
+          "example" : "NL",
+          "description" : "Countries in which this offer is currently on sale in the webshop, in ISO-3166-1 format."
+        }
+      }
+    },
     "Order" : {
       "type" : "object",
       "required" : [ "orderItems", "shipmentDetails" ],
@@ -3829,7 +3835,7 @@
         "entityId" : {
           "type" : "string",
           "example" : "987654321",
-          "description" : "The id of the object being processed. E.g. in case of a shipment process id, you will receive the id of the order item being processed."
+          "description" : "The id of the object being processed. For example, in case of a shipment process id, you will receive the id of the order item being processed."
         },
         "eventType" : {
           "type" : "string",
@@ -3971,7 +3977,7 @@
         "countries" : {
           "type" : "array",
           "items" : {
-            "$ref" : "#/definitions/CountryCode"
+            "$ref" : "#/definitions/PromotionCountryCode"
           }
         },
         "promotionType" : {
@@ -3991,9 +3997,20 @@
       },
       "description" : "A single promotion."
     },
+    "PromotionCountryCode" : {
+      "type" : "object",
+      "required" : [ "countryCode" ],
+      "properties" : {
+        "countryCode" : {
+          "type" : "string",
+          "example" : "NL",
+          "description" : "The country code of the country in which the promotion is active.",
+          "enum" : [ "NL", "BE" ]
+        }
+      }
+    },
     "Promotions" : {
       "type" : "object",
-      "required" : [ "promotions" ],
       "properties" : {
         "promotions" : {
           "type" : "array",
@@ -4117,7 +4134,7 @@
         "countries" : {
           "type" : "array",
           "items" : {
-            "$ref" : "#/definitions/CountryCode"
+            "$ref" : "#/definitions/PromotionCountryCode"
           }
         },
         "promotionType" : {
@@ -4217,7 +4234,7 @@
         "rmaId" : {
           "type" : "string",
           "example" : "31234567",
-          "description" : "The RMA (Return Merchandise Authorization) id that identifies this particular return."
+          "description" : "The RMA (Return Merchandise Authorization) identifier of the return."
         },
         "orderId" : {
           "type" : "string",
@@ -4622,7 +4639,7 @@
         "rmaId" : {
           "type" : "string",
           "example" : "31234567",
-          "description" : "The RMA (Return Merchandise Authorization) id that identifies this particular return."
+          "description" : "The RMA (Return Merchandise Authorization) identifier of the return."
         },
         "orderId" : {
           "type" : "string",
@@ -4730,12 +4747,14 @@
         "handlingResult" : {
           "type" : "string",
           "example" : "RETURN_RECEIVED",
+          "description" : "The handling result requested by the retailer.",
           "enum" : [ "RETURN_RECEIVED", "EXCHANGE_PRODUCT", "RETURN_DOES_NOT_MEET_CONDITIONS", "REPAIR_PRODUCT", "CUSTOMER_KEEPS_PRODUCT_PAID", "STILL_APPROVED" ]
         },
         "quantityReturned" : {
           "type" : "integer",
           "format" : "int32",
           "example" : 1,
+          "description" : "The quantity of items returned.",
           "minimum" : 1,
           "maximum" : 9999
         }
@@ -5257,7 +5276,7 @@
           "type" : "integer",
           "format" : "int32",
           "example" : 5,
-          "description" : "The amount of items in stock minus handled order and minus open orders. As compared to the stock you sent us. When this reaches 0, your offer will not be for sale on the shop."
+          "description" : "The amount of order items in stock minus handled order items and minus open order items. As compared to the stock you sent us. When this reaches 0, your offer will not be for sale on the shop."
         },
         "managedByRetailer" : {
           "type" : "boolean",
@@ -5297,7 +5316,7 @@
         "visible" : {
           "type" : "array",
           "items" : {
-            "$ref" : "#/definitions/CountryCode"
+            "$ref" : "#/definitions/OffersCountryCode"
           }
         }
       }
@@ -5501,16 +5520,16 @@
           "type" : "integer",
           "format" : "int32",
           "example" : 10,
-          "description" : "The number of parcels in this replenishment. Note: for first mile this is only a maximum of 20 load carriers.",
+          "description" : "The number of parcels in this replenishment. Note: if you are using the bol.com pickup service, the maximum number is 20.",
           "minimum" : 1,
-          "maximum" : 50
+          "maximum" : 66
         },
         "loadCarriers" : {
           "type" : "array",
           "items" : {
             "$ref" : "#/definitions/UpdateLoadCarrier"
           },
-          "maxItems" : 50,
+          "maxItems" : 66,
           "minItems" : 1
         }
       }
@@ -5563,7 +5582,7 @@
           "type" : "string",
           "example" : "DOWNLOAD_FAILED_404",
           "description" : "The reason code explaining why the value was rejected.",
-          "enum" : [ "DELETED", "DOWNLOAD_FAILED_404", "DOWNLOAD_FAILED_UNAUTHORIZED", "IMAGE_FLAGGED_AS_DUPLICATE", "IMAGE_RATE_LIMITED", "IMPORT_FAILED", "MATCH_TO_PRODUCT_FAILED", "NOT_VALID_FOR_IMPORT", "SCORED_OTHER_IMAGE_WON", "SUPPLIED_FLAGGED_AS_BLACKLISTED", "UNKNOWN", "UNPUBLISHED", "UNSUPPORTED_MIMETYPE", "UPLOAD_CANCELLED", "UPLOAD_DEADLINE_REACHED", "UPLOAD_FAILED" ]
+          "enum" : [ "DELETED", "DOWNLOAD_FAILED_404", "DOWNLOAD_FAILED_UNAUTHORIZED", "IMAGE_FLAGGED_AS_DUPLICATE", "IMAGE_RATE_LIMITED", "IMPORT_FAILED", "LABEL_UPDATED", "MATCH_TO_PRODUCT_FAILED", "NOT_VALID_FOR_IMPORT", "PUBLISHED", "RECEIVED", "SCORED_OTHER_IMAGE_WON", "STORED", "SUPPLIED_FLAGGED_AS_BLACKLISTED", "UNKNOWN", "UNPUBLISHED", "UNSUPPORTED_MIMETYPE", "UPLOAD_CANCELLED", "UPLOAD_DEADLINE_REACHED", "UPLOAD_FAILED", "UPLOAD_REJECTED" ]
         },
         "subStatusDescription" : {
           "type" : "string",
@@ -5578,7 +5597,7 @@
       "properties" : {
         "id" : {
           "type" : "string",
-          "example" : "Width",
+          "example" : "Ean",
           "description" : "The identifier of the attribute for which the value has changed."
         },
         "values" : {
@@ -5597,7 +5616,7 @@
           "type" : "string",
           "example" : "INVALID_NUMBER",
           "description" : "The reason code explaining why the value was rejected.",
-          "enum" : [ "BLOCKED_BY_RATE_LIMITER", "DEPRECATED", "IDENTICAL_VALUE_AS_BEFORE", "MATCH_TO_PRODUCT_FAILED", "NOT_RECENT", "REJECTED", "REJECTED_BY_BRAND_AUTHORITY", "REJECTED_BY_LOGISTIC", "REJECTED_NO_DATA", "REJECTED_UNPROCESSABLE", "TIMED_OUT", "UNKNOWN", "VALIDATION_FAILED", "VALIDATION_FAILED_DISABLED_GPC_CODE", "VALIDATION_FAILED_DOES_NOT_EXIST", "VALIDATION_FAILED_INVALID_DATE", "VALIDATION_FAILED_INVALID_EAN", "VALIDATION_FAILED_INVALID_FRACTION", "VALIDATION_FAILED_INVALID_GPC_CODE", "VALIDATION_FAILED_INVALID_INTEGER", "VALIDATION_FAILED_INVALID_ISODATE", "VALIDATION_FAILED_INVALID_ISODATETIME", "VALIDATION_FAILED_INVALID_LOV_VALUE", "VALIDATION_FAILED_INVALID_MULTIPLE_VALUES", "VALIDATION_FAILED_INVALID_NO_VALUES", "VALIDATION_FAILED_INVALID_NUMBER", "VALIDATION_FAILED_INVALID_NUMERIC_TEXT", "VALIDATION_FAILED_INVALID_TEXT", "VALIDATION_FAILED_INVALID_UNIT", "VALIDATION_FAILED_INVALID_URL", "VALIDATION_FAILED_INVALID_VALUES", "VALIDATION_FAILED_NOT_ALLOWED", "VALIDATION_FAILED_UNKNOWN_BASETYPE" ]
+          "enum" : [ "BLOCKED_BY_RATE_LIMITER", "CREATED", "DEPRECATED", "IDENTICAL_VALUE_AS_BEFORE", "MATCH_TO_PRODUCT_FAILED", "NOT_CHANGED", "NOT_RECENT", "PROCESSING_STARTED", "RECEIVED", "REJECTED", "REJECTED_BY_BRAND_AUTHORITY", "REJECTED_BY_LOGISTIC", "REJECTED_NO_DATA", "REJECTED_UNPROCESSABLE", "SELECTED", "SELECTED_BY_BRAND_AUTHORITY", "SELECTED_BY_LOGISTIC", "SELECTION_DELETED", "SELECTION_MERGED", "TIMED_OUT", "UPDATED", "UPLOADED", "UNKNOWN", "VALID_EAN", "VALIDATED", "VALIDATION_FAILED", "VALIDATION_FAILED_DISABLED_GPC_CODE", "VALIDATION_FAILED_DOES_NOT_EXIST", "VALIDATION_FAILED_INVALID_DATE", "VALIDATION_FAILED_INVALID_EAN", "VALIDATION_FAILED_INVALID_FRACTION", "VALIDATION_FAILED_INVALID_GPC_CODE", "VALIDATION_FAILED_INVALID_INTEGER", "VALIDATION_FAILED_INVALID_ISODATE", "VALIDATION_FAILED_INVALID_ISODATETIME", "VALIDATION_FAILED_INVALID_LOV_VALUE", "VALIDATION_FAILED_INVALID_MULTIPLE_VALUES", "VALIDATION_FAILED_INVALID_NO_VALUES", "VALIDATION_FAILED_INVALID_NUMBER", "VALIDATION_FAILED_INVALID_NUMERIC_TEXT", "VALIDATION_FAILED_INVALID_TEXT", "VALIDATION_FAILED_INVALID_UNIT", "VALIDATION_FAILED_INVALID_URL", "VALIDATION_FAILED_INVALID_VALUES", "VALIDATION_FAILED_NOT_ALLOWED", "VALIDATION_FAILED_UNKNOWN_BASETYPE", "WAITING_FOR_GLOBAL_ID" ]
         },
         "subStatusDescription" : {
           "type" : "string",
@@ -5618,7 +5637,7 @@
         "language" : {
           "type" : "string",
           "example" : "nl",
-          "description" : "The language in which the content changes were submitted.",
+          "description" : "The language in which content is submitted.",
           "enum" : [ "nl", "nl-BE", "fr", "fr-BE" ]
         },
         "status" : {

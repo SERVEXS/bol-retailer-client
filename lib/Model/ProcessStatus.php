@@ -327,7 +327,7 @@ class ProcessStatus implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets entity_id
      *
-     * @param string|null $entity_id The id of the object being processed. E.g. in case of a shipment process id, you will receive the id of the order item being processed.
+     * @param string|null $entity_id The id of the object being processed. For example, in case of a shipment process id, you will receive the id of the order item being processed.
      *
      * @return self
      */

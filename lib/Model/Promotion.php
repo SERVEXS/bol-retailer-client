@@ -64,7 +64,7 @@ class Promotion implements ModelInterface, ArrayAccess, \JsonSerializable
         'title' => 'string',
         'start_date_time' => '\DateTime',
         'end_date_time' => '\DateTime',
-        'countries' => '\ServeXS\BolRetailer\v7\Model\CountryCode[]',
+        'countries' => '\ServeXS\BolRetailer\v7\Model\PromotionCountryCode[]',
         'promotion_type' => 'string',
         'retailer_specific_promotion' => 'bool',
         'campaign' => '\ServeXS\BolRetailer\v7\Model\Campaign'
@@ -389,7 +389,7 @@ class Promotion implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets countries
      *
-     * @return \ServeXS\BolRetailer\v7\Model\CountryCode[]
+     * @return \ServeXS\BolRetailer\v7\Model\PromotionCountryCode[]
      */
     public function getCountries()
     {
@@ -399,7 +399,7 @@ class Promotion implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets countries
      *
-     * @param \ServeXS\BolRetailer\v7\Model\CountryCode[] $countries countries
+     * @param \ServeXS\BolRetailer\v7\Model\PromotionCountryCode[] $countries countries
      *
      * @return self
      */

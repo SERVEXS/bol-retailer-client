@@ -191,9 +191,6 @@ class Promotions implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['promotions'] === null) {
-            $invalidProperties[] = "'promotions' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -212,7 +209,7 @@ class Promotions implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets promotions
      *
-     * @return \ServeXS\BolRetailer\v7\Model\ReducedPromotion[]
+     * @return \ServeXS\BolRetailer\v7\Model\ReducedPromotion[]|null
      */
     public function getPromotions()
     {
@@ -222,7 +219,7 @@ class Promotions implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets promotions
      *
-     * @param \ServeXS\BolRetailer\v7\Model\ReducedPromotion[] $promotions promotions
+     * @param \ServeXS\BolRetailer\v7\Model\ReducedPromotion[]|null $promotions promotions
      *
      * @return self
      */

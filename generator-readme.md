@@ -14,4 +14,4 @@
 
 ### download the latest api-spec file from `https://api.bol.com/retailer/public/apispec/Retailer%20API%20-%20v7` save it in the main directory as `RetailerApiV7.json`
 
-### Run `yarn generator` or `npm generate`
+### Run `yarn generate` or `npm generate`

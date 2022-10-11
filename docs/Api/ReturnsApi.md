@@ -4,10 +4,10 @@ All URIs are relative to https://api.bol.com.
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**createReturn()**](ReturnsApi.md#createReturn) | **POST** /retailer/returns | Create return
+[**createReturn()**](ReturnsApi.md#createReturn) | **POST** /retailer/returns | Create a return
 [**getReturn()**](ReturnsApi.md#getReturn) | **GET** /retailer/returns/{return-id} | Get a return by return id
 [**getReturns()**](ReturnsApi.md#getReturns) | **GET** /retailer/returns | Get returns
-[**handleReturn()**](ReturnsApi.md#handleReturn) | **PUT** /retailer/returns/{rma-id} | Handle a return
+[**handleReturn()**](ReturnsApi.md#handleReturn) | **PUT** /retailer/returns/{rma-id} | Handle a return by rma id
 
 
 ## `createReturn()`
@@ -16,7 +16,7 @@ Method | HTTP request | Description
 createReturn($body): \ServeXS\BolRetailer\v7\Model\ProcessStatus
 ```
 
-Create return
+Create a return
 
 Create a return, and automatically handle it with the provided handling result. When successfully created, the resulting return id is provided in the process status.
 
@@ -188,9 +188,9 @@ No authorization required
 handleReturn($rma_id, $body): \ServeXS\BolRetailer\v7\Model\ProcessStatus
 ```
 
-Handle a return
+Handle a return by rma id
 
-Allows the user to handle a return. This can be to either handle an open return, or change the handlingResult of an already handled return. The latter is only possible in limited scenarios, please check the returns documentation for a complete list.
+Allows the user to handle a return. This can be to either handle an open return, or change the handlingResult of an already handled return. Please refer to the Returns documentation for further details.
 
 ### Example
 
@@ -205,7 +205,7 @@ $apiInstance = new ServeXS\BolRetailer\v7\Api\ReturnsApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$rma_id = 56; // int | The RMA (Return Merchandise Authorization) id that identifies this particular return.
+$rma_id = 56; // int | The RMA (Return Merchandise Authorization) identifier of the return.
 $body = new \ServeXS\BolRetailer\v7\Model\ReturnRequest(); // \ServeXS\BolRetailer\v7\Model\ReturnRequest | The handling result requested by the retailer.
 
 try {
@@ -220,7 +220,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **rma_id** | **int**| The RMA (Return Merchandise Authorization) id that identifies this particular return. |
+ **rma_id** | **int**| The RMA (Return Merchandise Authorization) identifier of the return. |
  **body** | [**\ServeXS\BolRetailer\v7\Model\ReturnRequest**](../Model/ReturnRequest.md)| The handling result requested by the retailer. | [optional]
 
 ### Return type

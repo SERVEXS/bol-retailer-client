@@ -2223,7 +2223,7 @@ class ReplenishmentsApi
     /**
      * Operation postReplenishment
      *
-     * Post replenishment
+     * Create a replenishment
      *
      * @param  \ServeXS\BolRetailer\v7\Model\CreateReplenishmentRequest $body body (optional)
      *
@@ -2240,7 +2240,7 @@ class ReplenishmentsApi
     /**
      * Operation postReplenishmentWithHttpInfo
      *
-     * Post replenishment
+     * Create a replenishment
      *
      * @param  \ServeXS\BolRetailer\v7\Model\CreateReplenishmentRequest $body (optional)
      *
@@ -2346,7 +2346,7 @@ class ReplenishmentsApi
     /**
      * Operation postReplenishmentAsync
      *
-     * Post replenishment
+     * Create a replenishment
      *
      * @param  \ServeXS\BolRetailer\v7\Model\CreateReplenishmentRequest $body (optional)
      *
@@ -2366,7 +2366,7 @@ class ReplenishmentsApi
     /**
      * Operation postReplenishmentAsyncWithHttpInfo
      *
-     * Post replenishment
+     * Create a replenishment
      *
      * @param  \ServeXS\BolRetailer\v7\Model\CreateReplenishmentRequest $body (optional)
      *
@@ -2499,7 +2499,7 @@ class ReplenishmentsApi
     /**
      * Operation putReplenishment
      *
-     * Update replenishment
+     * Update a replenishment by replenishment id
      *
      * @param  string $replenishment_id The unique identifier of the replenishment. (required)
      * @param  \ServeXS\BolRetailer\v7\Model\UpdateReplenishmentRequest $body body (optional)
@@ -2517,7 +2517,7 @@ class ReplenishmentsApi
     /**
      * Operation putReplenishmentWithHttpInfo
      *
-     * Update replenishment
+     * Update a replenishment by replenishment id
      *
      * @param  string $replenishment_id The unique identifier of the replenishment. (required)
      * @param  \ServeXS\BolRetailer\v7\Model\UpdateReplenishmentRequest $body (optional)
@@ -2624,7 +2624,7 @@ class ReplenishmentsApi
     /**
      * Operation putReplenishmentAsync
      *
-     * Update replenishment
+     * Update a replenishment by replenishment id
      *
      * @param  string $replenishment_id The unique identifier of the replenishment. (required)
      * @param  \ServeXS\BolRetailer\v7\Model\UpdateReplenishmentRequest $body (optional)
@@ -2645,7 +2645,7 @@ class ReplenishmentsApi
     /**
      * Operation putReplenishmentAsyncWithHttpInfo
      *
-     * Update replenishment
+     * Update a replenishment by replenishment id
      *
      * @param  string $replenishment_id The unique identifier of the replenishment. (required)
      * @param  \ServeXS\BolRetailer\v7\Model\UpdateReplenishmentRequest $body (optional)

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**language** | **string** | The language in which the content changes were submitted. |
+**language** | **string** | The language in which content is submitted. |
 **attributes** | [**\ServeXS\BolRetailer\v7\Model\Attribute[]**](Attribute.md) | A list of attributes. |
 **assets** | [**\ServeXS\BolRetailer\v7\Model\Asset[]**](Asset.md) |  | [optional]
 
