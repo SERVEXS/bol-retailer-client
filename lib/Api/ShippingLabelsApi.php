@@ -472,14 +472,14 @@ class ShippingLabelsApi
 
             switch($statusCode) {
                 case 200:
-                    if ('string[]' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
+                    //if ('string[]' === '\SplFileObject') {
+                    //    $content = $response->getBody(); //stream goes to serializer
+                    //} else {
                         $content = (string) $response->getBody();
-                    }
+                    //}
 
                     return [
-                        ObjectSerializer::deserialize($content, 'string[]', []),
+                        [$content],//ObjectSerializer::deserialize($content, 'string[]', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
