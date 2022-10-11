@@ -12,6 +12,15 @@
 
 ## Generate or update
 
-### download the latest api-spec file from `https://api.bol.com/retailer/public/apispec/Retailer%20API%20-%20v7` save it in the main directory as `RetailerApiV7.json`
+### Updating spec file
+
+#### via scipt
+
+- Linux: run `sh ./update-spec.sh`
+- Windows (PowerShell): run `update-spec.ps1`
+
+#### manual method
+
+download the latest api-spec file from `https://api.bol.com/retailer/public/apispec/Retailer%20API%20-%20v7` save it in the main directory as `RetailerApiV7.json`
 
 ### Run `yarn generate` or `npm generate`
