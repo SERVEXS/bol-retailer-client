@@ -408,7 +408,7 @@ class InvoicesApi
      *
      * @throws \ServeXS\BolRetailer\v7\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return string[]|\ServeXS\BolRetailer\v7\Model\Problem
+     * @return string[]|\ServeXS\BolRetailer\v7\Model\Problem|\ServeXS\BolRetailer\v7\Model\Problem
      */
     public function getInvoiceSpecification($invoice_id, $page = null)
     {
@@ -426,7 +426,7 @@ class InvoicesApi
      *
      * @throws \ServeXS\BolRetailer\v7\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of string[]|\ServeXS\BolRetailer\v7\Model\Problem, HTTP status code, HTTP response headers (array of strings)
+     * @return array of string[]|\ServeXS\BolRetailer\v7\Model\Problem|\ServeXS\BolRetailer\v7\Model\Problem, HTTP status code, HTTP response headers (array of strings)
      */
     public function getInvoiceSpecificationWithHttpInfo($invoice_id, $page = null)
     {
@@ -485,6 +485,18 @@ class InvoicesApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+                case 404:
+                    if ('\ServeXS\BolRetailer\v7\Model\Problem' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\ServeXS\BolRetailer\v7\Model\Problem', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
             }
 
             $returnType = 'string[]';
@@ -511,6 +523,14 @@ class InvoicesApi
                     $e->setResponseObject($data);
                     break;
                 case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\ServeXS\BolRetailer\v7\Model\Problem',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\ServeXS\BolRetailer\v7\Model\Problem',

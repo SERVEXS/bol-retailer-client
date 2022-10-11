@@ -230,16 +230,16 @@ class UpdateReplenishmentRequest implements ModelInterface, ArrayAccess, \JsonSe
             );
         }
 
-        if (!is_null($this->container['number_of_load_carriers']) && ($this->container['number_of_load_carriers'] > 50)) {
-            $invalidProperties[] = "invalid value for 'number_of_load_carriers', must be smaller than or equal to 50.";
+        if (!is_null($this->container['number_of_load_carriers']) && ($this->container['number_of_load_carriers'] > 66)) {
+            $invalidProperties[] = "invalid value for 'number_of_load_carriers', must be smaller than or equal to 66.";
         }
 
         if (!is_null($this->container['number_of_load_carriers']) && ($this->container['number_of_load_carriers'] < 1)) {
             $invalidProperties[] = "invalid value for 'number_of_load_carriers', must be bigger than or equal to 1.";
         }
 
-        if (!is_null($this->container['load_carriers']) && (count($this->container['load_carriers']) > 50)) {
-            $invalidProperties[] = "invalid value for 'load_carriers', number of items must be less than or equal to 50.";
+        if (!is_null($this->container['load_carriers']) && (count($this->container['load_carriers']) > 66)) {
+            $invalidProperties[] = "invalid value for 'load_carriers', number of items must be less than or equal to 66.";
         }
 
         if (!is_null($this->container['load_carriers']) && (count($this->container['load_carriers']) < 1)) {
@@ -332,15 +332,15 @@ class UpdateReplenishmentRequest implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets number_of_load_carriers
      *
-     * @param int|null $number_of_load_carriers The number of parcels in this replenishment. Note: for first mile this is only a maximum of 20 load carriers.
+     * @param int|null $number_of_load_carriers The number of parcels in this replenishment. Note: if you are using the bol.com pickup service, the maximum number is 20.
      *
      * @return self
      */
     public function setNumberOfLoadCarriers($number_of_load_carriers)
     {
 
-        if (!is_null($number_of_load_carriers) && ($number_of_load_carriers > 50)) {
-            throw new \InvalidArgumentException('invalid value for $number_of_load_carriers when calling UpdateReplenishmentRequest., must be smaller than or equal to 50.');
+        if (!is_null($number_of_load_carriers) && ($number_of_load_carriers > 66)) {
+            throw new \InvalidArgumentException('invalid value for $number_of_load_carriers when calling UpdateReplenishmentRequest., must be smaller than or equal to 66.');
         }
         if (!is_null($number_of_load_carriers) && ($number_of_load_carriers < 1)) {
             throw new \InvalidArgumentException('invalid value for $number_of_load_carriers when calling UpdateReplenishmentRequest., must be bigger than or equal to 1.');
@@ -371,8 +371,8 @@ class UpdateReplenishmentRequest implements ModelInterface, ArrayAccess, \JsonSe
     public function setLoadCarriers($load_carriers)
     {
 
-        if (!is_null($load_carriers) && (count($load_carriers) > 50)) {
-            throw new \InvalidArgumentException('invalid value for $load_carriers when calling UpdateReplenishmentRequest., number of items must be less than or equal to 50.');
+        if (!is_null($load_carriers) && (count($load_carriers) > 66)) {
+            throw new \InvalidArgumentException('invalid value for $load_carriers when calling UpdateReplenishmentRequest., number of items must be less than or equal to 66.');
         }
         if (!is_null($load_carriers) && (count($load_carriers) < 1)) {
             throw new \InvalidArgumentException('invalid length for $load_carriers when calling UpdateReplenishmentRequest., number of items must be greater than or equal to 1.');

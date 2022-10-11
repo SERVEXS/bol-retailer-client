@@ -191,9 +191,13 @@ class UploadReportAsset implements ModelInterface, ArrayAccess, \JsonSerializabl
     const SUB_STATUS_IMAGE_FLAGGED_AS_DUPLICATE = 'IMAGE_FLAGGED_AS_DUPLICATE';
     const SUB_STATUS_IMAGE_RATE_LIMITED = 'IMAGE_RATE_LIMITED';
     const SUB_STATUS_IMPORT_FAILED = 'IMPORT_FAILED';
+    const SUB_STATUS_LABEL_UPDATED = 'LABEL_UPDATED';
     const SUB_STATUS_MATCH_TO_PRODUCT_FAILED = 'MATCH_TO_PRODUCT_FAILED';
     const SUB_STATUS_NOT_VALID_FOR_IMPORT = 'NOT_VALID_FOR_IMPORT';
+    const SUB_STATUS_PUBLISHED = 'PUBLISHED';
+    const SUB_STATUS_RECEIVED = 'RECEIVED';
     const SUB_STATUS_SCORED_OTHER_IMAGE_WON = 'SCORED_OTHER_IMAGE_WON';
+    const SUB_STATUS_STORED = 'STORED';
     const SUB_STATUS_SUPPLIED_FLAGGED_AS_BLACKLISTED = 'SUPPLIED_FLAGGED_AS_BLACKLISTED';
     const SUB_STATUS_UNKNOWN = 'UNKNOWN';
     const SUB_STATUS_UNPUBLISHED = 'UNPUBLISHED';
@@ -201,6 +205,7 @@ class UploadReportAsset implements ModelInterface, ArrayAccess, \JsonSerializabl
     const SUB_STATUS_UPLOAD_CANCELLED = 'UPLOAD_CANCELLED';
     const SUB_STATUS_UPLOAD_DEADLINE_REACHED = 'UPLOAD_DEADLINE_REACHED';
     const SUB_STATUS_UPLOAD_FAILED = 'UPLOAD_FAILED';
+    const SUB_STATUS_UPLOAD_REJECTED = 'UPLOAD_REJECTED';
 
     /**
      * Gets allowable values of the enum
@@ -230,9 +235,13 @@ class UploadReportAsset implements ModelInterface, ArrayAccess, \JsonSerializabl
             self::SUB_STATUS_IMAGE_FLAGGED_AS_DUPLICATE,
             self::SUB_STATUS_IMAGE_RATE_LIMITED,
             self::SUB_STATUS_IMPORT_FAILED,
+            self::SUB_STATUS_LABEL_UPDATED,
             self::SUB_STATUS_MATCH_TO_PRODUCT_FAILED,
             self::SUB_STATUS_NOT_VALID_FOR_IMPORT,
+            self::SUB_STATUS_PUBLISHED,
+            self::SUB_STATUS_RECEIVED,
             self::SUB_STATUS_SCORED_OTHER_IMAGE_WON,
+            self::SUB_STATUS_STORED,
             self::SUB_STATUS_SUPPLIED_FLAGGED_AS_BLACKLISTED,
             self::SUB_STATUS_UNKNOWN,
             self::SUB_STATUS_UNPUBLISHED,
@@ -240,6 +249,7 @@ class UploadReportAsset implements ModelInterface, ArrayAccess, \JsonSerializabl
             self::SUB_STATUS_UPLOAD_CANCELLED,
             self::SUB_STATUS_UPLOAD_DEADLINE_REACHED,
             self::SUB_STATUS_UPLOAD_FAILED,
+            self::SUB_STATUS_UPLOAD_REJECTED,
         ];
     }
 

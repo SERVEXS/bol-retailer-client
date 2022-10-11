@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**rma_id** | **string** | The RMA (Return Merchandise Authorization) id that identifies this particular return. |
+**rma_id** | **string** | The RMA (Return Merchandise Authorization) identifier of the return. |
 **order_id** | **string** | The id of the customer order this return item is in. |
 **ean** | **string** | The EAN number associated with this product. |
 **title** | **string** | The product title. |

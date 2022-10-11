@@ -1,9 +1,9 @@
 {
   "name": "bol-retailer-api-client",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "license": "MIT",
   "scripts": {
-    "generate": "openapi-generator-cli generate -i RetailerAPIv7.json -g php -o ./ --invoker-package ServeXS\\BolRetailer\\v7 --artifact-version 1.0 --git-user-id servexs --git-repo-id bol-retailer-client"
+    "generate": "openapi-generator-cli generate -i RetailerAPIv7.json -g php -o ./ --invoker-package ServeXS\\BolRetailer\\v7 --artifact-version 1.0.1 --git-user-id servexs --git-repo-id bol-retailer-client"
   },
   "dependencies": {
     "@openapitools/openapi-generator-cli": "^2.4.26"

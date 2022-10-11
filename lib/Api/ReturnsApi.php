@@ -117,7 +117,7 @@ class ReturnsApi
     /**
      * Operation createReturn
      *
-     * Create return
+     * Create a return
      *
      * @param  \ServeXS\BolRetailer\v7\Model\CreateReturnRequest $body body (optional)
      *
@@ -134,7 +134,7 @@ class ReturnsApi
     /**
      * Operation createReturnWithHttpInfo
      *
-     * Create return
+     * Create a return
      *
      * @param  \ServeXS\BolRetailer\v7\Model\CreateReturnRequest $body (optional)
      *
@@ -240,7 +240,7 @@ class ReturnsApi
     /**
      * Operation createReturnAsync
      *
-     * Create return
+     * Create a return
      *
      * @param  \ServeXS\BolRetailer\v7\Model\CreateReturnRequest $body (optional)
      *
@@ -260,7 +260,7 @@ class ReturnsApi
     /**
      * Operation createReturnAsyncWithHttpInfo
      *
-     * Create return
+     * Create a return
      *
      * @param  \ServeXS\BolRetailer\v7\Model\CreateReturnRequest $body (optional)
      *
@@ -982,9 +982,9 @@ class ReturnsApi
     /**
      * Operation handleReturn
      *
-     * Handle a return
+     * Handle a return by rma id
      *
-     * @param  int $rma_id The RMA (Return Merchandise Authorization) id that identifies this particular return. (required)
+     * @param  int $rma_id The RMA (Return Merchandise Authorization) identifier of the return. (required)
      * @param  \ServeXS\BolRetailer\v7\Model\ReturnRequest $body The handling result requested by the retailer. (optional)
      *
      * @throws \ServeXS\BolRetailer\v7\ApiException on non-2xx response
@@ -1000,9 +1000,9 @@ class ReturnsApi
     /**
      * Operation handleReturnWithHttpInfo
      *
-     * Handle a return
+     * Handle a return by rma id
      *
-     * @param  int $rma_id The RMA (Return Merchandise Authorization) id that identifies this particular return. (required)
+     * @param  int $rma_id The RMA (Return Merchandise Authorization) identifier of the return. (required)
      * @param  \ServeXS\BolRetailer\v7\Model\ReturnRequest $body The handling result requested by the retailer. (optional)
      *
      * @throws \ServeXS\BolRetailer\v7\ApiException on non-2xx response
@@ -1107,9 +1107,9 @@ class ReturnsApi
     /**
      * Operation handleReturnAsync
      *
-     * Handle a return
+     * Handle a return by rma id
      *
-     * @param  int $rma_id The RMA (Return Merchandise Authorization) id that identifies this particular return. (required)
+     * @param  int $rma_id The RMA (Return Merchandise Authorization) identifier of the return. (required)
      * @param  \ServeXS\BolRetailer\v7\Model\ReturnRequest $body The handling result requested by the retailer. (optional)
      *
      * @throws \InvalidArgumentException
@@ -1128,9 +1128,9 @@ class ReturnsApi
     /**
      * Operation handleReturnAsyncWithHttpInfo
      *
-     * Handle a return
+     * Handle a return by rma id
      *
-     * @param  int $rma_id The RMA (Return Merchandise Authorization) id that identifies this particular return. (required)
+     * @param  int $rma_id The RMA (Return Merchandise Authorization) identifier of the return. (required)
      * @param  \ServeXS\BolRetailer\v7\Model\ReturnRequest $body The handling result requested by the retailer. (optional)
      *
      * @throws \InvalidArgumentException
@@ -1177,7 +1177,7 @@ class ReturnsApi
     /**
      * Create request for operation 'handleReturn'
      *
-     * @param  int $rma_id The RMA (Return Merchandise Authorization) id that identifies this particular return. (required)
+     * @param  int $rma_id The RMA (Return Merchandise Authorization) identifier of the return. (required)
      * @param  \ServeXS\BolRetailer\v7\Model\ReturnRequest $body The handling result requested by the retailer. (optional)
      *
      * @throws \InvalidArgumentException

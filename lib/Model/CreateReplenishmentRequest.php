@@ -229,8 +229,8 @@ class CreateReplenishmentRequest implements ModelInterface, ArrayAccess, \JsonSe
         if ($this->container['number_of_load_carriers'] === null) {
             $invalidProperties[] = "'number_of_load_carriers' can't be null";
         }
-        if (($this->container['number_of_load_carriers'] > 20)) {
-            $invalidProperties[] = "invalid value for 'number_of_load_carriers', must be smaller than or equal to 20.";
+        if (($this->container['number_of_load_carriers'] > 66)) {
+            $invalidProperties[] = "invalid value for 'number_of_load_carriers', must be smaller than or equal to 66.";
         }
 
         if (($this->container['number_of_load_carriers'] < 1)) {
@@ -324,7 +324,7 @@ class CreateReplenishmentRequest implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets labeling_by_bol
      *
-     * @param bool $labeling_by_bol Indicates whether the replenishment will be labeled by bol.com or not.
+     * @param bool $labeling_by_bol Indicates whether the replenishment will be labeled by bol.com.
      *
      * @return self
      */
@@ -348,15 +348,15 @@ class CreateReplenishmentRequest implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets number_of_load_carriers
      *
-     * @param int $number_of_load_carriers The number of parcels in this replenishment.
+     * @param int $number_of_load_carriers The number of parcels in this replenishment. Note: if you are using the bol.com pickup service, the maximum number is 20.
      *
      * @return self
      */
     public function setNumberOfLoadCarriers($number_of_load_carriers)
     {
 
-        if (($number_of_load_carriers > 20)) {
-            throw new \InvalidArgumentException('invalid value for $number_of_load_carriers when calling CreateReplenishmentRequest., must be smaller than or equal to 20.');
+        if (($number_of_load_carriers > 66)) {
+            throw new \InvalidArgumentException('invalid value for $number_of_load_carriers when calling CreateReplenishmentRequest., must be smaller than or equal to 66.');
         }
         if (($number_of_load_carriers < 1)) {
             throw new \InvalidArgumentException('invalid value for $number_of_load_carriers when calling CreateReplenishmentRequest., must be bigger than or equal to 1.');

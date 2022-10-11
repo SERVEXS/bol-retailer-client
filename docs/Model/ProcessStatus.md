@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **process_status_id** | **string** | The process status id. | [optional]
-**entity_id** | **string** | The id of the object being processed. E.g. in case of a shipment process id, you will receive the id of the order item being processed. | [optional]
+**entity_id** | **string** | The id of the object being processed. For example, in case of a shipment process id, you will receive the id of the order item being processed. | [optional]
 **event_type** | **string** | Name of the requested action that is being processed. |
 **description** | **string** | Describes the action that is being processed. |
 **status** | **string** | Status of the action being processed. |

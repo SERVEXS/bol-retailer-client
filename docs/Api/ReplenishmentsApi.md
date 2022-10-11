@@ -11,8 +11,8 @@ Method | HTTP request | Description
 [**getReplenishments()**](ReplenishmentsApi.md#getReplenishments) | **GET** /retailer/replenishments | Get replenishments
 [**postPickupTimeSlots()**](ReplenishmentsApi.md#postPickupTimeSlots) | **POST** /retailer/replenishments/pickup-time-slots | Post pickup time slots
 [**postProductLabels()**](ReplenishmentsApi.md#postProductLabels) | **POST** /retailer/replenishments/product-labels | Post product labels
-[**postReplenishment()**](ReplenishmentsApi.md#postReplenishment) | **POST** /retailer/replenishments | Post replenishment
-[**putReplenishment()**](ReplenishmentsApi.md#putReplenishment) | **PUT** /retailer/replenishments/{replenishment-id} | Update replenishment
+[**postReplenishment()**](ReplenishmentsApi.md#postReplenishment) | **POST** /retailer/replenishments | Create a replenishment
+[**putReplenishment()**](ReplenishmentsApi.md#putReplenishment) | **PUT** /retailer/replenishments/{replenishment-id} | Update a replenishment by replenishment id
 
 
 ## `getDeliveryDates()`
@@ -422,9 +422,9 @@ No authorization required
 postReplenishment($body): \ServeXS\BolRetailer\v7\Model\ProcessStatus
 ```
 
-Post replenishment
+Create a replenishment
 
-Create a replenishment.
+Creates a replenishment.
 
 ### Example
 
@@ -478,9 +478,9 @@ No authorization required
 putReplenishment($replenishment_id, $body): \ServeXS\BolRetailer\v7\Model\ProcessStatus
 ```
 
-Update replenishment
+Update a replenishment by replenishment id
 
-Update a replenishment.
+Updates a replenishment.
 
 ### Example
 

@@ -267,7 +267,7 @@ class ReturnRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets handling_result
      *
-     * @param string|null $handling_result handling_result
+     * @param string|null $handling_result The handling result requested by the retailer.
      *
      * @return self
      */
@@ -301,7 +301,7 @@ class ReturnRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets quantity_returned
      *
-     * @param int $quantity_returned quantity_returned
+     * @param int $quantity_returned The quantity of items returned.
      *
      * @return self
      */

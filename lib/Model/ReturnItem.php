@@ -302,7 +302,7 @@ class ReturnItem implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets rma_id
      *
-     * @param string $rma_id The RMA (Return Merchandise Authorization) id that identifies this particular return.
+     * @param string $rma_id The RMA (Return Merchandise Authorization) identifier of the return.
      *
      * @return self
      */
